@@ -26,6 +26,7 @@ import com.graphaware.runtime.module.TimerDrivenModule;
 import com.graphaware.runtime.module.TxDrivenModule;
 import com.graphaware.tx.event.improved.api.ImprovedTransactionData;
 import org.neo4j.graphdb.GraphDatabaseService;
+import org.neo4j.driver.v1.*;
 
 public class TxAndTimerDrivenModule implements TxDrivenModule, TimerDrivenModule {
 
@@ -62,7 +63,7 @@ public class TxAndTimerDrivenModule implements TxDrivenModule, TimerDrivenModule
 
     @Override
     public TimerDrivenModuleContext doSomeWork(TimerDrivenModuleContext timerDrivenModuleContext, GraphDatabaseService graphDatabaseService) {
-        Integer b = 2+3;
+
         return new EmptyContext();
     }
 
