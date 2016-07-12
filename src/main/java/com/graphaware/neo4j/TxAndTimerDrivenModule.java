@@ -63,7 +63,6 @@ public class TxAndTimerDrivenModule implements TxDrivenModule, TimerDrivenModule
 
     @Override
     public TimerDrivenModuleContext doSomeWork(TimerDrivenModuleContext timerDrivenModuleContext, GraphDatabaseService graphDatabaseService) {
-        Driver driver = GraphDatabase.driver()
         return new EmptyContext();
     }
 
@@ -85,6 +84,20 @@ public class TxAndTimerDrivenModule implements TxDrivenModule, TimerDrivenModule
 
     @Override
     public void afterCommit(Object state) {
+        Driver driver = GraphDatabase.driver( "bolt://localhost", AuthTokens.basic( "neo4j", "neo4j" ) );
+        Session session = driver.session();
+
+        session.run( "CREATE (a:Person {name:'Arthur', title:'King'})" );
+
+        StatementResult result = session.run( "MATCH (a:Person) WHERE a.name = 'Arthur' RETURN a.name AS name, a.title AS title" );
+        while ( result.hasNext() )
+        {
+            Record record = result.next();
+            System.out.println( record.get( "title" ).asString() + " " + record.get("name").asString() );
+        }
+
+        session.close();
+        driver.close();
     }
 
     @Override
