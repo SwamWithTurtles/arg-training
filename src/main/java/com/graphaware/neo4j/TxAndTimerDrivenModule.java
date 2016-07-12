@@ -63,7 +63,7 @@ public class TxAndTimerDrivenModule implements TxDrivenModule, TimerDrivenModule
 
     @Override
     public TimerDrivenModuleContext doSomeWork(TimerDrivenModuleContext timerDrivenModuleContext, GraphDatabaseService graphDatabaseService) {
-
+        Driver driver = GraphDatabase.driver()
         return new EmptyContext();
     }
 

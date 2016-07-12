@@ -21,8 +21,6 @@ import com.graphaware.runtime.module.BaseRuntimeModuleBootstrapper;
 import com.graphaware.runtime.module.RuntimeModule;
 import com.graphaware.runtime.module.RuntimeModuleBootstrapper;
 import org.neo4j.graphdb.GraphDatabaseService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
@@ -31,7 +29,6 @@ import java.util.Map;
  * Bootstraps the {@link TxAndTimerDrivenModule} in server mode
  */
 public class ModuleBootstrapper extends BaseRuntimeModuleBootstrapper<ModuleConfiguration> implements RuntimeModuleBootstrapper {
-    private static final Logger LOG = LoggerFactory.getLogger(ModuleBootstrapper.class);
 
     /**
      * {@inheritDoc}
